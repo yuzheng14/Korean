@@ -16,6 +16,8 @@ public class Korean {
     private static final HashMap<Character, Integer> leadMap = new HashMap<>();
     private static final HashMap<Character, Integer> vowelMap = new HashMap<>();
     private static final HashMap<Character, Integer> tailMap = new HashMap<>();
+    private static final char[] numberal = {'\0', '십', '백', '천', '만', '십', '백', '천', '억', '십', '백', '천', '조', '십', '백', '천'};
+    private static final char[] number = {'공', '일', '이', '삼', '사', '오', '육', '칠', '팔', '구'};
 
     static {
         leadMap.put('ㄱ', 0);
@@ -135,7 +137,7 @@ public class Korean {
      * @param c
      * @return
      */
-    private static boolean isHangul(char c) {
+    public static boolean isHangul(char c) {
         return (c >= HANGUL_OFFSET) && (c <= HANGUL_OUTSET);
     }
 
@@ -213,7 +215,7 @@ public class Korean {
      * @param c
      * @return
      */
-    private static boolean isVowel(char c) {
+    public static boolean isVowel(char c) {
         return String.valueOf(vowelSet).contains("" + c);
     }
 
@@ -226,5 +228,35 @@ public class Korean {
     private static boolean isJamo(char c) {
         String jamo = "ㄱㄲㄳㄴㄵㄶㄷㄸㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅃㅄㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ";
         return jamo.contains("" + c);
+    }
+
+    /**
+     * 将数字转换为韩语汉字数词
+     * 输入格式只能为数字
+     * 最大数值为Integer.MAX_VALUE(2147483647)
+     * TODO 等以后学习NLP会语义分析后根据语义抓换汉字数词或者固有数词
+     *
+     * @param n
+     * @return
+     */
+    public static String numberToHangul(int n) {
+        if (n == 1) {
+            return "일";
+        }
+        int i = 0;
+        StringBuilder stringBuilder = new StringBuilder();
+        while (n > 0) {
+            int temp = n % 10;
+            if (temp!=0){
+                stringBuilder.append(numberal[i]);
+                if (n!=1)
+                    stringBuilder.append(number[temp]);
+            }
+
+
+            n /= 10;
+            i++;
+        }
+        return stringBuilder.reverse().toString();
     }
 }

@@ -3,7 +3,7 @@
 ## 韩语文字拆分
     Korean.hangulToJamo("");
 使用hangulToJamo方法将传入的字符串转换为韩语字母  
-**例如**
+**例如:**
 ```java
 import com.yuzheng14.Tools.Korean;
 public class Solution{
@@ -14,8 +14,8 @@ public class Solution{
 ```
 ## 韩语字母组装为韩语文字
     Korean.jamoToHangul("");
-使用jamoToHangul方法将传入的字符串中的韩语字母转换为韩语文字，同时不改变原字符串中的其他部分
-**例如**
+使用jamoToHangul方法将传入的字符串中的韩语字母转换为韩语文字，同时不改变原字符串中的其他部分  
+**例如:**
 ```java
 import com.yuzheng14.Tools.Korean;
 public class Solution{
@@ -24,3 +24,12 @@ public class Solution{
     }
 }
 ```
+## 其他方法
+>|方法名称|说明|
+>|:-----|:-----:|
+>|isHangul|判断字符是否为韩语字符|
+>|isVowel|判断字符是否为母音|
+>|isJamo|判断是否为韩语字母|
+>|numerToHangul|将传入的数字转换为韩语|
+****
+目前正在申请上传至Maven仓库
