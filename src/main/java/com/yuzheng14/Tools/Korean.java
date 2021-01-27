@@ -259,4 +259,25 @@ public class Korean {
         }
         return stringBuilder.reverse().toString();
     }
+
+    /**
+     * 返回送气音
+     * @param c
+     * @return
+     */
+    public static char toAsprated(char c){
+        return ' ';
+    }
+
+    /**
+     * 返回鼻音
+     * @param c
+     * @return
+     */
+    public static char toNasal(char c){
+        return ' ';
+    }
+
+    public static char
+
 }
