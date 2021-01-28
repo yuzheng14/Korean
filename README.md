@@ -31,5 +31,11 @@ public class Solution{
 >|isVowel|判断字符是否为母音|
 >|isJamo|判断是否为韩语字母|
 >|numerToHangul|将传入的数字转换为韩语|
+>|toAspirated|返回送气音|
+>|toNasal|返回鼻音|
+>|toFortis|返回紧音|
+>|finalConsonantToDelegateConsonant|返回收音的代表音|
+>|isDoubleFinalConsonant|判断是否为双收音|
+>|splitDoubleFinalConsonant|将双收音拆分为两个子音|
 ****
 目前正在申请上传至Maven仓库

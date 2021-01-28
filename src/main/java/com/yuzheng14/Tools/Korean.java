@@ -19,6 +19,12 @@ public class Korean {
     private static final char[] numberal = {'\0', '십', '백', '천', '만', '십', '백', '천', '억', '십', '백', '천', '조', '십', '백', '천'};
     private static final char[] number = {'공', '일', '이', '삼', '사', '오', '육', '칠', '팔', '구'};
 
+    private static final String doubleFinalConsonant="ㄺㄳㄵㄶㄼㄽㄾㅀㄻㄿㅄ";
+
+    private static final HashMap<Character,char[]> consonantMap=new HashMap<>();
+    private static final HashMap<Character,Character> delegateConsonantMap=new HashMap<>();
+    private static final HashMap<Character,String> doubleFinalConsonantMap=new HashMap<>();
+
     static {
         leadMap.put('ㄱ', 0);
         leadMap.put('ㄲ', 1);
@@ -88,6 +94,50 @@ public class Korean {
         tailMap.put('ㅌ', 25);
         tailMap.put('ㅍ', 26);
         tailMap.put('ㅎ', 27);
+        consonantMap.put('ㄱ', new char[]{'ㅋ', 'ㄲ', 'ㅇ', '\0'});
+        consonantMap.put('ㄷ', new char[]{'ㅌ', 'ㄸ', 'ㄴ', 'ㄹ'});
+        consonantMap.put('ㅂ', new char[]{'ㅍ', 'ㅃ', 'ㅁ', '\0'});
+        consonantMap.put('ㅅ', new char[]{'1', 'ㅆ', '\0', '\0'});
+        consonantMap.put('ㅈ', new char[]{'ㅊ', 'ㅉ', '\0', '\0'});
+        consonantMap.put('ㅎ', new char[]{'\0', '\0', '\0', '\0'});
+        delegateConsonantMap.put('ㅋ','ㄱ');
+        delegateConsonantMap.put('ㄲ','ㄱ');
+        delegateConsonantMap.put('ㄱ','ㄱ');
+        delegateConsonantMap.put('ㄺ','ㄱ');
+        delegateConsonantMap.put('ㄳ','ㄱ');
+        delegateConsonantMap.put('ㅌ','ㄷ');
+        delegateConsonantMap.put('ㅅ','ㄷ');
+        delegateConsonantMap.put('ㅈ','ㄷ');
+        delegateConsonantMap.put('ㅆ','ㄷ');
+        delegateConsonantMap.put('ㄷ','ㄷ');
+        delegateConsonantMap.put('ㅊ','ㄷ');
+        delegateConsonantMap.put('ㅍ','ㅂ');
+        delegateConsonantMap.put('ㄿ','ㅂ');
+        delegateConsonantMap.put('ㅂ','ㅂ');
+        delegateConsonantMap.put('ㅄ','ㅂ');
+        delegateConsonantMap.put('ㄴ','ㄴ');
+        delegateConsonantMap.put('ㄵ','ㄴ');
+        delegateConsonantMap.put('ㄶ','ㄴ');
+        delegateConsonantMap.put('ㄹ','ㄹ');
+        delegateConsonantMap.put('ㄼ','ㄹ');
+        delegateConsonantMap.put('ㄽ','ㄹ');
+        delegateConsonantMap.put('ㄾ','ㄹ');
+        delegateConsonantMap.put('ㅀ','ㄹ');
+        delegateConsonantMap.put('ㅁ','ㅁ');
+        delegateConsonantMap.put('ㄻ','ㅁ');
+        delegateConsonantMap.put('ㅇ','ㅇ');
+        delegateConsonantMap.put('ㅎ','\0');
+        doubleFinalConsonantMap.put('ㄺ', "ㄹㄱ");
+        doubleFinalConsonantMap.put('ㄳ', "ㄱㅅ");
+        doubleFinalConsonantMap.put('ㄵ', "ㄴㅈ");
+        doubleFinalConsonantMap.put('ㄶ', "ㄴㅎ");
+        doubleFinalConsonantMap.put('ㄼ', "ㄹㅂ");
+        doubleFinalConsonantMap.put('ㄽ', "ㄹㅅ");
+        doubleFinalConsonantMap.put('ㄾ', "ㄹㅌ");
+        doubleFinalConsonantMap.put('ㅀ', "ㄹㅎ");
+        doubleFinalConsonantMap.put('ㄻ', "ㄹㅁ");
+        doubleFinalConsonantMap.put('ㄿ', "ㄹㅍ");
+        doubleFinalConsonantMap.put('ㅄ', "ㅂㅅ");
     }
 
     /**
@@ -265,8 +315,13 @@ public class Korean {
      * @param c
      * @return
      */
-    public static char toAsprated(char c){
-        return ' ';
+    public static char toAspirated(char c){
+        try{
+            char result=consonantMap.get(c)[0];
+            return result=='\0'? c:result;
+        }catch(NullPointerException e){
+            return c;
+        }
     }
 
     /**
@@ -275,9 +330,64 @@ public class Korean {
      * @return
      */
     public static char toNasal(char c){
-        return ' ';
+        try{
+            char result=consonantMap.get(c)[2];
+            return result=='\0'? c:result;
+        }catch(NullPointerException e){
+            return c;
+        }
     }
 
-    public static char
+    /**
+     * 返回紧音
+     * @param c
+     * @return
+     */
+    public static char toFortis(char c){
+        try{
+            char result=consonantMap.get(c)[1];
+            return result=='\0'? c:result;
+        }catch(NullPointerException e){
+            return c;
+        }
+    }
+
+    /**
+     * 返回收音的代表音
+     * @param c
+     * @return
+     */
+    public static char finalConsonantToDelegateConsonant(char c){
+        try{
+            return delegateConsonantMap.get(c);
+        }catch (NullPointerException e){
+            return c;
+        }
+
+    }
+
+    /**
+     * 判断是否为双收音
+     * @param c
+     * @return
+     */
+    public static boolean isDoubleFinalConsonant(char c){
+        return doubleFinalConsonant.contains(""+c);
+    }
+
+    /**
+     * 将双收音拆分为两个子音
+     * @param c
+     * @return
+     */
+    public static String splitDoubleFinalConsonant(char c){
+        try{
+            return doubleFinalConsonantMap.get(c);
+        }catch (NullPointerException e){
+            return ""+c+" ";
+        }
+    }
+
+
 
 }
