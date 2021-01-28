@@ -97,7 +97,7 @@ public class Korean {
         consonantMap.put('ㄱ', new char[]{'ㅋ', 'ㄲ', 'ㅇ', '\0'});
         consonantMap.put('ㄷ', new char[]{'ㅌ', 'ㄸ', 'ㄴ', 'ㄹ'});
         consonantMap.put('ㅂ', new char[]{'ㅍ', 'ㅃ', 'ㅁ', '\0'});
-        consonantMap.put('ㅅ', new char[]{'1', 'ㅆ', '\0', '\0'});
+        consonantMap.put('ㅅ', new char[]{'\0', 'ㅆ', '\0', '\0'});
         consonantMap.put('ㅈ', new char[]{'ㅊ', 'ㅉ', '\0', '\0'});
         consonantMap.put('ㅎ', new char[]{'\0', '\0', '\0', '\0'});
         delegateConsonantMap.put('ㅋ','ㄱ');
@@ -316,12 +316,13 @@ public class Korean {
      * @return
      */
     public static char toAspirated(char c){
-        try{
+        if (consonantMap.containsKey(c)){
             char result=consonantMap.get(c)[0];
             return result=='\0'? c:result;
-        }catch(NullPointerException e){
+        }else {
             return c;
         }
+
     }
 
     /**
@@ -330,12 +331,11 @@ public class Korean {
      * @return
      */
     public static char toNasal(char c){
-        try{
+        if (consonantMap.containsKey(c)){
             char result=consonantMap.get(c)[2];
             return result=='\0'? c:result;
-        }catch(NullPointerException e){
-            return c;
         }
+        return c;
     }
 
     /**
@@ -344,12 +344,11 @@ public class Korean {
      * @return
      */
     public static char toFortis(char c){
-        try{
+        if (consonantMap.containsKey(c)){
             char result=consonantMap.get(c)[1];
             return result=='\0'? c:result;
-        }catch(NullPointerException e){
-            return c;
         }
+        return c;
     }
 
     /**
@@ -358,9 +357,10 @@ public class Korean {
      * @return
      */
     public static char finalConsonantToDelegateConsonant(char c){
-        try{
+        if (delegateConsonantMap.containsKey(c)){
             return delegateConsonantMap.get(c);
-        }catch (NullPointerException e){
+        }
+        else {
             return c;
         }
 
@@ -381,11 +381,8 @@ public class Korean {
      * @return
      */
     public static String splitDoubleFinalConsonant(char c){
-        try{
-            return doubleFinalConsonantMap.get(c);
-        }catch (NullPointerException e){
-            return ""+c+" ";
-        }
+        String s=doubleFinalConsonantMap.get(c);
+        return s==null? ""+c:s;
     }
 
 

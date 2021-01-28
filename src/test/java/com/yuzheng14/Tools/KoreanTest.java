@@ -1,5 +1,9 @@
 package com.yuzheng14.Tools;
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.HashMap;
+
 import static com.yuzheng14.Tools.Korean.*;
 public class KoreanTest {
 
@@ -39,5 +43,83 @@ public class KoreanTest {
 
     public void println(String s){
         System.out.println(s);
+    }
+
+    @Test
+    public void toAspiratedTest(){
+        Assert.assertEquals('ㅍ',toAspirated('ㅂ'));
+        Assert.assertEquals('ㅊ',toAspirated('ㅈ'));
+        Assert.assertEquals('ㅌ',toAspirated('ㄷ'));
+        Assert.assertEquals('ㅋ',toAspirated('ㄱ'));
+        Assert.assertEquals('ㅅ',toAspirated('ㅅ'));
+        Assert.assertEquals('ㅁ',toAspirated('ㅁ'));
+        Assert.assertEquals('ㄴ',toAspirated('ㄴ'));
+        Assert.assertEquals('ㅇ',toAspirated('ㅇ'));
+        Assert.assertEquals('ㄹ',toAspirated('ㄹ'));
+        Assert.assertEquals('ㅎ',toAspirated('ㅎ'));
+        Assert.assertEquals('ㅋ',toAspirated('ㅋ'));
+        Assert.assertEquals('ㅌ',toAspirated('ㅌ'));
+        Assert.assertEquals('ㅊ',toAspirated('ㅊ'));
+    }
+
+    @Test
+    public void toNasalTest(){
+        Assert.assertEquals('ㅇ',toNasal('ㄱ'));
+        Assert.assertEquals('ㄴ',toNasal('ㄷ'));
+        Assert.assertEquals('ㅁ',toNasal('ㅂ'));
+        Assert.assertEquals('ㅇ',toNasal('ㅇ'));
+        Assert.assertEquals('ㄴ',toNasal('ㄴ'));
+    }
+
+    @Test
+    public void toFortisTest(){
+        Assert.assertEquals('ㄲ',toFortis('ㄱ'));
+        Assert.assertEquals('ㅃ',toFortis('ㅂ'));
+        Assert.assertEquals('ㅆ',toFortis('ㅅ'));
+        Assert.assertEquals('ㅇ',toFortis('ㅇ'));
+        Assert.assertEquals('ㄴ',toFortis('ㄴ'));
+    }
+
+    @Test
+    public void finalConsonantToDelegateConsonantTest(){
+        Assert.assertEquals('ㄷ',finalConsonantToDelegateConsonant('ㅊ'));
+        Assert.assertEquals('ㄱ',finalConsonantToDelegateConsonant('ㄺ'));
+        Assert.assertEquals('ㅁ',finalConsonantToDelegateConsonant('ㄻ'));
+        Assert.assertEquals('ㅁ',finalConsonantToDelegateConsonant('ㅁ'));
+    }
+    @Test
+    public void isDoubleFinalConsonantTest(){
+        Assert.assertTrue(isDoubleFinalConsonant('ㄻ'));
+        Assert.assertTrue(isDoubleFinalConsonant('ㄵ'));
+        Assert.assertFalse(isDoubleFinalConsonant('ㅁ'));
+        Assert.assertFalse(isDoubleFinalConsonant('ㅎ'));
+    }
+
+    @Test
+    public void splitDobleFinalConsonantTest(){
+        Assert.assertEquals("ㄹㅁ",splitDoubleFinalConsonant('ㄻ'));
+        Assert.assertEquals("ㄴㅈ",splitDoubleFinalConsonant('ㄵ'));
+        Assert.assertEquals("ㅁ",splitDoubleFinalConsonant('ㅁ'));
+        Assert.assertEquals("ㅌ",splitDoubleFinalConsonant('ㅌ'));
+    }
+
+    @Test
+    public void charIsNullTest(){
+        HashMap<Character,Character> map=new HashMap<>();
+        map.put('c','1');
+        char result =map.get('d');
+        println(""+result);
+    }
+    @Test
+    public void getMapTest(){
+        HashMap<Character,Character> map=new HashMap<>();
+        map.put('1','1');
+//        char c =map.get('2');
+        HashMap<Character,Integer> map1=new HashMap<>();
+        map1.put('1',1);
+//        int i =map1.get('2');
+        HashMap<Character,String > map2=new HashMap<>();
+        map2.put('1',"1");
+        String s=map2.get('2');
     }
 }
