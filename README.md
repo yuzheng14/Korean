@@ -39,3 +39,6 @@ public class Solution{
 >|splitDoubleFinalConsonant|将双收音拆分为两个子音|
 ****
 目前正在申请上传至Maven仓库
+# 更新说明
+## 2021.1.30
+修复numberToHangul返回字符串最后会有空格

@@ -122,4 +122,9 @@ public class KoreanTest {
         map2.put('1',"1");
         String s=map2.get('2');
     }
+
+    @Test
+    public void numberToHangulTest2(){
+        Assert.assertEquals("이",numberToHangul(2));
+    }
 }

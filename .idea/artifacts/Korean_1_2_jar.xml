@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="Korean:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/Korean-1.1.jar</output-path>
+  <artifact type="jar" name="Korean-1.2:jar">
+    <output-path>$PROJECT_DIR$/../artifacts</output-path>
     <root id="archive" name="Korean.jar">
       <element id="module-output" name="Korean" />
     </root>

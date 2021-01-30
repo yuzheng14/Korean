@@ -302,12 +302,10 @@ public class Korean {
                 if (n!=1)
                     stringBuilder.append(number[temp]);
             }
-
-
             n /= 10;
             i++;
         }
-        return stringBuilder.reverse().toString();
+        return stringBuilder.reverse().toString().trim();
     }
 
     /**
@@ -384,7 +382,4 @@ public class Korean {
         String s=doubleFinalConsonantMap.get(c);
         return s==null? ""+c:s;
     }
-
-
-
 }
