@@ -37,8 +37,12 @@ public class Solution{
 >|finalConsonantToDelegateConsonant|返回收音的代表音|
 >|isDoubleFinalConsonant|判断是否为双收音|
 >|splitDoubleFinalConsonant|将双收音拆分为两个子音|
+>|numbersToHangul|将字符串中的数字替换成韩字数词|
 ****
 目前正在申请上传至Maven仓库
 # 更新说明
-## 2021.1.30
-修复numberToHangul返回字符串最后会有空格
+2021.1.30
+```
+* 修复numberToHangul返回字符串最后会有空格
+* 新增numbersToHangul方法对字符串中的数字进行替换
+```

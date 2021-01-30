@@ -382,4 +382,19 @@ public class Korean {
         String s=doubleFinalConsonantMap.get(c);
         return s==null? ""+c:s;
     }
+
+    /**
+     * 将字符串中的数字转换为汉字数词
+     * @param s
+     * @return
+     */
+    public static String numbersToHangul(String s){
+        StringBuilder stringBuilder=new StringBuilder(s);
+        for (int i = 0; i <stringBuilder.length(); i++) {
+            if (Character.isDigit(stringBuilder.charAt(i))){
+                stringBuilder.replace(i,i+1,numberToHangul(Integer.parseInt(String.valueOf(stringBuilder.charAt(i)))));
+            }
+        }
+        return stringBuilder.toString();
+    }
 }
