@@ -198,13 +198,13 @@ public class Korean {
      * @return
      */
     public static String jamoToHangul(String jamo) {
-        boolean lastIsJamo = false;
-        int current = 0;
+        boolean lastIsJamo;
+        int current=0;
         out:
         while (true) {
             lastIsJamo = false;
-            current = 0;
-            for (int i = 0; i < jamo.length(); i++) {
+//            current = 0;
+            for (int i = current; i < jamo.length(); i++) {
                 if (i == 0) {
                     lastIsJamo = isJamo(jamo.charAt(i));
                 } else if (lastIsJamo && !isJamo(jamo.charAt(i))) {
@@ -214,6 +214,9 @@ public class Korean {
                     lastIsJamo = true;
                     current = i;
                 }
+            }
+            if (lastIsJamo&&isJamo(jamo.charAt(jamo.length()-1))){
+                jamo = jamo.replace(jamo.substring(current), jamosToHangul(jamo.substring(current)));
             }
             break;
         }
@@ -244,11 +247,12 @@ public class Korean {
             }
         }
         for (String string : jamoList) {
+
             char c;
-            int i;
+            int i=0;
             if (string.length() == 2) {
                 i = leadMap.get(string.charAt(0)) * 588 + vowelMap.get(string.charAt(1)) * 28 + 44032;
-            } else {
+            } else if (string.length()==3){
                 i = leadMap.get(string.charAt(0)) * 588 + vowelMap.get(string.charAt(1)) * 28
                         + tailMap.get(string.charAt(2)) + 44032;
             }

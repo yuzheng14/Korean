@@ -14,7 +14,7 @@ public class KoreanTest {
 
     @Test
     public void jamoToHangulTest(){
-        System.out.println(Korean.jamoToHangul("ㄱㅖㅇㅑㄱㄱㅡㅁ ㅊㅓㄴㅁㅏㄴ ㅇㅝㄴㅇㅡㄹ ㅇㅣㅂㄱㅡㅁㅎㅏㄹㅐ."));
+        Assert.assertEquals("계약금 천만 원을 입금하래.",Korean.jamoToHangul("ㄱㅖㅇㅑㄱㄱㅡㅁ ㅊㅓㄴㅁㅏㄴ ㅇㅝㄴㅇㅡㄹ ㅇㅣㅂㄱㅡㅁㅎㅏㄹㅐ."));
     }
 
     @Test
@@ -126,5 +126,14 @@ public class KoreanTest {
     @Test
     public void numberToHangulTest2(){
         Assert.assertEquals("이",numberToHangul(2));
+    }
+    @Test
+    public void isHangulTest(){
+        Assert.assertTrue(isHangul('중'));
+    }
+
+    @Test
+    public void jamoToHangulTest2(){
+        Assert.assertEquals("절대로 고개를 떨구지 말라",jamoToHangul(hangulToJamo("절대로 고개를 떨구지 말라")));
     }
 }

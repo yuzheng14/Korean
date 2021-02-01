@@ -41,8 +41,8 @@ public class Solution{
 ****
 目前正在申请上传至Maven仓库
 # 更新说明
-2021.1.30
-```
-* 修复numberToHangul返回字符串最后会有空格
-* 新增numbersToHangul方法对字符串中的数字进行替换
-```
+## 2021.1.30
+* 修复`numberToHangul()`返回字符串最后会有空格
+* 新增`numbersToHangul()`方法对字符串中的数字进行替换
+## 2021.2.1
+* 修复`jamoToHangul()`方法中若最后一个字符为韩语字母时最后一个韩语字母片段无法组装的bug
