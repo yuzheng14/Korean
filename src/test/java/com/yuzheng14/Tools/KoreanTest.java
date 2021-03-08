@@ -142,4 +142,9 @@ public class KoreanTest {
         println("그러나 ㅇㅣ ㅇㅡㄴㅁㅣㄹ ㅎㅏㄴ ㅇㅓㄷㅜㅁ ㅅㅗㄱㅔ ㄴㅏㄹㅡㄹ ㄷㅟㅉㅗㄴㄴㅡㄴ ㅅㅏㄹㅏㅁㅡㄴ ㄴㅜㄱㅜㅁㄴㅣㄲㅏ");
         println(jamoToHangul("그러나 ㅇㅣ ㅇㅡㄴㅁㅣㄹ ㅎㅏㄴ ㅇㅓㄷㅜㅁ ㅅㅗㄱㅔ ㄴㅏㄹㅡㄹ ㄷㅟㅉㅗㄴㄴㅡㄴ ㅅㅏㄹㅏㅁㅡㄴ ㄴㅜㄱㅜㅁㄴㅣㄲㅏ"));
     }
+
+    @Test
+    public void jamoToHangulTest4(){
+        println(jamoToHangul("ㄴㅏㄴㅡㄴ ㅎㅗㄴㅈㅏㅅㅓ ㅁㅣㄹㅚㅇㅔ ㄱㅣㄹㅡㄹ ㄴㅏㅅㅓㄷㅆㅡㅁㄴㅣㄷㅏ"));
+    }
 }
