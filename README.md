@@ -46,3 +46,5 @@ public class Solution{
 * 新增`numbersToHangul()`方法对字符串中的数字进行替换
 ## 2021.2.1
 * 修复`jamoToHangul()`方法中若最后一个字符为韩语字母时最后一个韩语字母片段无法组装的bug
+## 2021.3.8
+- 修复`jamosToHangul()`方法若传入一个子音一个母音两个字符的情况下返回为空的bug

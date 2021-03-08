@@ -136,4 +136,10 @@ public class KoreanTest {
     public void jamoToHangulTest2(){
         Assert.assertEquals("절대로 고개를 떨구지 말라",jamoToHangul(hangulToJamo("절대로 고개를 떨구지 말라")));
     }
+
+    @Test
+    public void jamoToHangulTest3(){
+        println("그러나 ㅇㅣ ㅇㅡㄴㅁㅣㄹ ㅎㅏㄴ ㅇㅓㄷㅜㅁ ㅅㅗㄱㅔ ㄴㅏㄹㅡㄹ ㄷㅟㅉㅗㄴㄴㅡㄴ ㅅㅏㄹㅏㅁㅡㄴ ㄴㅜㄱㅜㅁㄴㅣㄲㅏ");
+        println(jamoToHangul("그러나 ㅇㅣ ㅇㅡㄴㅁㅣㄹ ㅎㅏㄴ ㅇㅓㄷㅜㅁ ㅅㅗㄱㅔ ㄴㅏㄹㅡㄹ ㄷㅟㅉㅗㄴㄴㅡㄴ ㅅㅏㄹㅏㅁㅡㄴ ㄴㅜㄱㅜㅁㄴㅣㄲㅏ"));
+    }
 }

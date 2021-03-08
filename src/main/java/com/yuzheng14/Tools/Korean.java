@@ -234,7 +234,7 @@ public class Korean {
         StringBuffer resultBuffer = new StringBuffer();
         int offset = 0;
         ArrayList<String> jamoList = new ArrayList<>();
-        for (int i = 2; i < jamos.length(); i++) {
+        for (int i = 1; i < jamos.length(); i++) {
             if ((i == jamos.length() - 1) && (!isVowel(jamos.charAt(i)))) {
                 jamoList.add(jamos.substring(offset, jamos.length()));
                 continue;
