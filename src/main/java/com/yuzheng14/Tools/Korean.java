@@ -247,7 +247,7 @@ public class Korean {
             }
         }
         for (String string : jamoList) {
-
+            if (string.equals("")) continue;
             char c;
             int i=0;
             if (string.length() == 2) {
