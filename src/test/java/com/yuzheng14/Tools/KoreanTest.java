@@ -2,6 +2,7 @@ package com.yuzheng14.Tools;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.lang.reflect.Method;
 import java.util.HashMap;
 
 import static com.yuzheng14.Tools.Korean.*;
@@ -146,5 +147,18 @@ public class KoreanTest {
     @Test
     public void jamoToHangulTest4(){
         println(jamoToHangul("ㄴㅏㄴㅡㄴ ㅎㅗㄴㅈㅏㅅㅓ ㅁㅣㄹㅚㅇㅔ ㄱㅣㄹㅡㄹ ㄴㅏㅅㅓㄷㅆㅡㅁㄴㅣㄷㅏ"));
+    }
+
+    @Test
+    public void jamoToHangulTest5(){
+        println(jamoToHangul("ㄴㅏㄴㅡㄴ ㄱㅡㄹㅡㄹ ㅅㅏㄹㅍㅣㄹㅕㄱㅗ ㅇㅕㅍㅡㄹㅗ ㅂㅣㅋㅣㅈㅣㅁㅏㄴ  ㄱㅡㅇㅔㄱㅔㅅㅓ ㄷㅏㄹㅏㄴㅏㄹ ㄷㅗㄹㅣㄱㅏ ㅇㅓㅂㅆㅡㅁㄴㅣㄷㅏ"));
+    }
+
+    @Test
+    public void jamosToHangulTest() throws Exception{
+        Method jamosToHangul=Korean.class.getDeclaredMethod("jamosToHangul", String.class);
+        jamosToHangul.setAccessible(true);
+//        println((String) jamosToHangul.invoke(Korean.class,"ㅂㅣㅋㅣㅈㅣㅁㅏㄴ"));
+        Assert.assertEquals("비키지만",(String) jamosToHangul.invoke(Korean.class,"ㅂㅣㅋㅣㅈㅣㅁㅏㄴ"));
     }
 }
